@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mini Video Hub</title>
+
+<style>
+:root {
+  --bg: #0f0f0f;
+  --card: #1c1c1c;
+  --text: #ffffff;
+  --muted: #aaaaaa;
+  --accent: #ff3d3d;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Header */
+header {
+  padding: 16px;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+/* Video grid */
+.video-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  padding: 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Card */
+.video-card {
+  background: var(--card);
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.video-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Video wrapper */
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  background: black;
+  overflow: hidden; /* To contain the progress bar */
+}
+
+.video-wrapper .play-pause-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none; /* Clicks go through to the wrapper */
+}
+
+.video-wrapper.paused .play-pause-icon,
+.video-card:hover .video-wrapper .play-pause-icon {
+  opacity: 1;
+}
+
+/* Video itself */
+video {
+  width: 100%;
+  height: auto;
+  max-height: 85vh;
+  display: block;
+  object-fit: contain;
+}
+
+/* Progress Bar */
+.progress-bar-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(100%);
+  transition: transform 0.2s ease-in-out;
+}
+
+.video-card:hover .progress-bar-container {
+  transform: translateY(0);
+}
+
+.progress-bar {
+  width: 0;
+  height: 100%;
+  background-color: var(--accent);
+}
+
+/* Info */
+.video-info {
+  padding: 12px;
+}
+
+.video-title {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.video-desc {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.video-meta {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+/* Desktop layout */
+@media (min-width: 768px) {
+  .video-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>🎬 Clip Hub</header>
+
+<div class="video-grid">
+
+  <!-- Video 1 -->
+  <div class="video-card">
+    <div class="video-wrapper paused">
+      <video playsinline loop>
+        <source src="video1.mp4" type="video/mp4">
+      </video>
+      <div class="play-pause-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path class="play-icon-path" d="M8 5v14l11-7z"/><path class="pause-icon-path" d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" style="display:none;"/></svg>
+      </div>
+      <div class="progress-bar-container">
+        <div class="progress-bar"></div>
+      </div>
+    </div>
+    <div class="video-info">
+      <!-- Change the title below -->
+      <div class="video-title">Hot Viral Married Girl Video</div>
+      <div class="video-meta">20.2k views</div>
+      <div class="video-desc"></div>
+    </div>
+  </div>
+
+
+  <!-- Image Card -->
+  <div class="video-card">
+    <div class="video-wrapper">
+      <!-- Use an img tag instead of video -->
+      <img src="image1.png" alt="Hot Viral Married Girl" style="width: 100%; height: auto; display: block; object-fit: contain; max-height: 85vh;">
+    </div>
+    <div class="video-info">
+      <!-- Change the title below -->
+      <div class="video-title">Hot Viral Married Girl Photo</div>
+      <div class="video-meta">45.3k views</div>
+      <div class="video-desc"></div>
+    </div>
+  </div>
+
+
+  <!-- Video 2 -->
+  <div class="video-card">
+    <div class="video-wrapper paused">
+      <video playsinline loop>
+        <source src="video2.mp4" type="video/mp4">
+      </video>
+      <div class="play-pause-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path class="play-icon-path" d="M8 5v14l11-7z"/><path class="pause-icon-path" d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" style="display:none;"/></svg>
+      </div>
+      <div class="progress-bar-container">
+        <div class="progress-bar"></div>
+      </div>
+    </div>
+    <div class="video-info">
+      <!-- Change the title below -->
+      <div class="video-title">Hot Viral Married Girl Video</div>
+      <div class="video-meta">15.7k views</div>
+      <div class="video-desc"></div>
+    </div>
+  </div>
+
+  <!-- Video 3 -->
+  <div class="video-card">
+    <div class="video-wrapper paused">
+      <video playsinline loop>
+        <source src="video3.mp4" type="video/mp4">
+      </video>
+      <div class="play-pause-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path class="play-icon-path" d="M8 5v14l11-7z"/><path class="pause-icon-path" d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" style="display:none;"/></svg>
+      </div>
+      <div class="progress-bar-container">
+        <div class="progress-bar"></div>
+      </div>
+    </div>
+    <div class="video-info">
+      <!-- Change the title below -->
+      <div class="video-title">Hot Viral Married Girl Video</div>
+      <div class="video-meta">31.1k views</div>
+      <div class="video-desc"></div>
+    </div>
+  </div>
+
+  <!-- Video 4 -->
+  <div class="video-card">
+    <div class="video-wrapper paused">
+      <video playsinline loop>
+        <source src="video4.mp4" type="video/mp4">
+      </video>
+      <div class="play-pause-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path class="play-icon-path" d="M8 5v14l11-7z"/><path class="pause-icon-path" d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" style="display:none;"/></svg>
+      </div>
+      <div class="progress-bar-container">
+        <div class="progress-bar"></div>
+      </div>
+    </div>
+    <div class="video-info">
+      <!-- Change the title below -->
+      <div class="video-title">Hot Viral Married Girl Video</div>
+      <div class="video-meta">13.2k views</div>
+      <div class="video-desc"></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const videoCards = document.querySelectorAll(".video-card");
+
+videoCards.forEach(card => {
+  const videoWrapper = card.querySelector(".video-wrapper");
+  const video = card.querySelector("video");
+  const playIcon = card.querySelector(".play-icon-path");
+  const pauseIcon = card.querySelector(".pause-icon-path");
+  const progressBar = card.querySelector(".progress-bar");
+
+  // Toggle play/pause on click
+  videoWrapper.addEventListener("click", () => {
+    if (video.paused) {
+      video.play();
+    } else {
+      video.pause();
+    }
+  });
+
+  // Pause other videos when one plays
+  video.addEventListener("play", () => {
+    videoWrapper.classList.remove("paused");
+    playIcon.style.display = "none";
+    pauseIcon.style.display = "block";
+
+    document.querySelectorAll("video").forEach(otherVideo => {
+      if (otherVideo !== video) {
+        otherVideo.pause();
+      }
+    });
+  });
+
+  // Update icon on pause
+  video.addEventListener("pause", () => {
+    videoWrapper.classList.add("paused");
+    playIcon.style.display = "block";
+    pauseIcon.style.display = "none";
+  });
+
+  // Update progress bar on time update
+  video.addEventListener("timeupdate", () => {
+    if (video.duration > 0) {
+      const progressPercent = (video.currentTime / video.duration) * 100;
+      progressBar.style.width = `${progressPercent}%`;
+    }
+  });
+});
+</script>
+
+</body>
+</html>
